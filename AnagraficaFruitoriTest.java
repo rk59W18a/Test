@@ -7,9 +7,9 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import logica.parte2.punto2.AnagraficaFruitori;
-import logica.parte2.punto2.ArchivioStorico;
-import logica.parte2.punto2.Fruitore;
+import logica.parte2.punto3.AnagraficaFruitori;
+import logica.parte2.punto3.ArchivioStorico;
+import logica.parte2.punto3.Fruitore;
 
 public class AnagraficaFruitoriTest {
 
