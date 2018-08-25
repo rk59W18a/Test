@@ -53,7 +53,7 @@ public class CategoriaConSottoCategorieTest {
 	}
 	
 	@Test
-	public void risorsaGiàPresente() {
+	public void risorsaGiaPresente() {
 		assertTrue(cConSottoc.verificaPresenza(f3.getTitolo()));
 	}
 	
@@ -74,7 +74,22 @@ public class CategoriaConSottoCategorieTest {
 	}
 	
 	@Test
-	public void ricercaPiùFilmPerGenere() {
+	public void ricercaFilmPerArtistaSoloNome() {
+		assertTrue(cConSottoc.ricercaRisorse("Al", Categoria.RIC_PER_ATTORE_I).contains(f3));
+    }
+	
+	@Test
+	public void ricercaFilmPerArtistaSoloCognome() {
+		assertTrue(cConSottoc.ricercaRisorse("Pacino", Categoria.RIC_PER_ATTORE_I).contains(f3));
+    }
+	
+	@Test
+	public void ricercaFilmPerArtistaNomeECognomeSenzaSpazio() {
+		assertFalse(cConSottoc.ricercaRisorse("AlPacino", Categoria.RIC_PER_ATTORE_I).contains(f3));
+    }
+	
+	@Test
+	public void ricercaPiuFilmPerGenere() {
 		assertTrue(cConSottoc.ricercaRisorse("Horror", Categoria.RIC_PER_GENERE).contains(f1));
 		assertTrue(cConSottoc.ricercaRisorse("Horror", Categoria.RIC_PER_GENERE).contains(f2));
 	}
