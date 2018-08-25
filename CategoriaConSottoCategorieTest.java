@@ -2,8 +2,6 @@ package test_2.punto3;
 
 import static org.junit.Assert.*;
 
-
-
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -60,7 +58,7 @@ public class CategoriaConSottoCategorieTest {
 	}
 	
 	@Test
-	public void risorsaGiàPresente() {
+	public void risorsaGiaPresente() {
 		assertTrue(cConSottoc.verificaPresenza(f3.getTitolo()));
 	}
 	
@@ -83,7 +81,25 @@ public class CategoriaConSottoCategorieTest {
 	}
 	
 	@Test
-	public void ricercaPiùFilmPerGenere() {
+	public void ricercaFilmPerArtistaSoloNome() {
+		r = new RicercaPerAttore("Al");
+		assertTrue(cConSottoc.ricercaRisorsa(r).contains(f3));
+	}
+	
+	@Test
+	public void ricercaFilmPerArtistaSoloCognome() {
+		r = new RicercaPerAttore("Pacino");
+		assertTrue(cConSottoc.ricercaRisorsa(r).contains(f3));
+	}
+	
+	@Test
+	public void ricercaFilmPerArtistaNomeECognomeSenzaSpazio() {
+		r = new RicercaPerAttore("AlPacino");
+		assertFalse(cConSottoc.ricercaRisorsa(r).contains(f3));
+	}
+	
+	@Test
+	public void ricercaPiuFilmPerGenere() {
 		r = new RicercaPerGenere("Horror");
 		assertTrue(cConSottoc.ricercaRisorsa(r).contains(f1));
 		assertTrue(cConSottoc.ricercaRisorsa(r).contains(f2));
