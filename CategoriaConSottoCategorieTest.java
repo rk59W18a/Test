@@ -14,7 +14,6 @@ import dominio.parte2.punto3.RicercaPerAttore;
 import dominio.parte2.punto3.RicercaPerGenere;
 import dominio.parte2.punto3.RicercaPerRegista;
 import dominio.parte2.punto3.SottoCategoria;
-import utility_2.SottoCategoriaException;
 
 public class CategoriaConSottoCategorieTest {
 
@@ -104,15 +103,4 @@ public class CategoriaConSottoCategorieTest {
 		assertTrue(cConSottoc.ricercaRisorsa(r).contains(f1));
 		assertTrue(cConSottoc.ricercaRisorsa(r).contains(f2));
 	}
-	
-	@Test(expected = SottoCategoriaException.class)
-	public void shouldThrowSottoCategoriaException1() throws Exception {
-		s1.verificaPresenza("It");
-	}	
-	
-	@Test(expected = SottoCategoriaException.class)
-	public void shouldThrowSottoCategoriaException2() throws Exception {
-		s1.aggiungiSottoCategoria(new SottoCategoria("Gialli"));
-	}
-	
 }
