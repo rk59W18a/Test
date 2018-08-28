@@ -1,18 +1,21 @@
 package test_2.punto5;
 
 import static org.junit.Assert.*;
+
+
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
+
 import dominio.parte2.punto5.Categoria;
-import dominio.parte2.punto5.Libro;
-import logica.parte2.punto5.Persona;
 import dominio.parte2.punto5.IRicercaStrategy;
+import dominio.parte2.punto5.Libro;
 import dominio.parte2.punto5.RicercaPerAnnoPubblicazioneStrategy;
 import dominio.parte2.punto5.RicercaPerArtistaStrategy;
 import dominio.parte2.punto5.RicercaPerCasaEditriceStrategy;
 import dominio.parte2.punto5.RicercaPerGenereStrategy;
 import dominio.parte2.punto5.RicercaPerTitoloStrategy;
+import logica.parte2.punto5.Persona;
 
 public class CategoriaSenzaSottoCategorieTest {
 	

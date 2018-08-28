@@ -1,18 +1,19 @@
 package test_2.punto5;
 
 import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
+
 import dominio.parte2.punto5.Categoria;
 import dominio.parte2.punto5.Film;
 import dominio.parte2.punto5.IRicercaStrategy;
-import logica.parte2.punto5.Persona;
 import dominio.parte2.punto5.RicercaPerArtistaStrategy;
 import dominio.parte2.punto5.RicercaPerGenereStrategy;
 import dominio.parte2.punto5.RicercaPerRegistaStrategy;
 import dominio.parte2.punto5.SottoCategoria;
-import utility_2.SottoCategoriaException;
+import logica.parte2.punto5.Persona;
 
 public class CategoriaConSottoCategorieTest {
 
@@ -101,15 +102,5 @@ public class CategoriaConSottoCategorieTest {
 		r = new RicercaPerGenereStrategy("Horror");
 		assertTrue(cConSottoc.ricercaRisorsa(r).contains(f1));
 		assertTrue(cConSottoc.ricercaRisorsa(r).contains(f2));
-	}
-	
-	@Test(expected = SottoCategoriaException.class)
-	public void shouldThrowSottoCategoriaException1() throws Exception {
-		s1.verificaPresenza("It");
-	}	
-	
-	@Test(expected = SottoCategoriaException.class)
-	public void shouldThrowSottoCategoriaException2() throws Exception {
-		s1.aggiungiSottoCategoria(new SottoCategoria("Gialli"));
 	}
 }
