@@ -14,7 +14,6 @@ import dominio.parte2.punto4.RicercaPerAttoreStrategy;
 import dominio.parte2.punto4.RicercaPerGenereStrategy;
 import dominio.parte2.punto4.RicercaPerRegistaStrategy;
 import dominio.parte2.punto4.SottoCategoria;
-import utility_2.SottoCategoriaException;
 
 public class CategoriaConSottoCategorieTest {
 
@@ -103,15 +102,5 @@ public class CategoriaConSottoCategorieTest {
 		r = new RicercaPerGenereStrategy("Horror");
 		assertTrue(cConSottoc.ricercaRisorsa(r).contains(f1));
 		assertTrue(cConSottoc.ricercaRisorsa(r).contains(f2));
-	}
-	
-	@Test(expected = SottoCategoriaException.class)
-	public void shouldThrowSottoCategoriaException1() throws Exception {
-		s1.verificaPresenza("It");
-	}	
-	
-	@Test(expected = SottoCategoriaException.class)
-	public void shouldThrowSottoCategoriaException2() throws Exception {
-		s1.aggiungiSottoCategoria(new SottoCategoria("Gialli"));
 	}
 }
