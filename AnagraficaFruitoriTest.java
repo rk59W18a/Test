@@ -3,6 +3,7 @@ package test_2.punto5;
 import static org.junit.Assert.*;
 
 
+
 import java.time.LocalDate;
 
 import org.junit.Before;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import logica.parte2.punto5.AnagraficaFruitori;
 import logica.parte2.punto5.ArchivioStorico;
 import logica.parte2.punto5.Fruitore;
+import utility.parte2.Data;
 
 public class AnagraficaFruitoriTest {
 
@@ -40,12 +42,12 @@ public class AnagraficaFruitoriTest {
 	
 	@Test
 	public void fruitoreGiaPresente() {	
-		assertTrue(af.verificaPresenza("Luca", "Rossi", LocalDate.of(1995, 8, 25)));	
+		assertTrue(af.verificaPresenza("Luca", "Rossi", Data.getDataImpostata(1995, 8, 25)));	
 	}
 	
 	@Test
 	public void fruitoreOmonimoMaEtaDiversaNonPresente() {	
-		assertFalse(af.verificaPresenza("Matteo", "Ferrari", LocalDate.of(1985, 4, 20)));	
+		assertFalse(af.verificaPresenza("Matteo", "Ferrari", Data.getDataImpostata(1985, 4, 20)));	
 	}
 	
 	@Test
