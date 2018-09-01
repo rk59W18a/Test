@@ -2,10 +2,6 @@ package test_2.punto5;
 
 import static org.junit.Assert.*;
 
-
-
-import java.time.LocalDate;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -72,7 +68,7 @@ public class AnagraficaFruitoriTest {
 	
 	@Test
 	public void controlloDecadenzaFruitoreSuccessivoAllaDataDiScadenza() {
-		f1.setDataDiScadenza(LocalDate.now().minusDays(1));
+		f1.setDataDiScadenza(Data.diminuisciDataAttualeNumeroGiorni(1));
 		af.decadenzaFruitore(as);
 		
 		assertFalse(af.getElenco().contains(f1));
@@ -80,7 +76,7 @@ public class AnagraficaFruitoriTest {
 	
 	@Test
 	public void controlloDecadenzaFruitoreSuccessivoAllaDataDiScadenzaPerArchivioStorico() {
-		f1.setDataDiScadenza(LocalDate.now().minusDays(1));
+		f1.setDataDiScadenza(Data.diminuisciDataAttualeNumeroGiorni(1));
 		af.decadenzaFruitore(as);
 		
 		assertTrue(as.getDecadenzeFruitoriStoriche().getElenco().contains(f1));
@@ -88,7 +84,7 @@ public class AnagraficaFruitoriTest {
 	
 	@Test
 	public void controlloDecadenzaFruitoreCoincidenteConLaDataDiScadenza() {
-		f2.setDataDiScadenza(LocalDate.now());
+		f2.setDataDiScadenza(Data.getDataAttuale());
 		af.decadenzaFruitore(as);
 		
 		assertFalse(af.getElenco().contains(f2));
@@ -96,7 +92,7 @@ public class AnagraficaFruitoriTest {
 	
 	@Test
 	public void controlloDecadenzaFruitoreCoincidenteConLaDataDiScadenzaPerArchivioStorico() {
-		f2.setDataDiScadenza(LocalDate.now().minusDays(1));
+		f2.setDataDiScadenza(Data.diminuisciDataAttualeNumeroGiorni(1));
 		af.decadenzaFruitore(as);
 		
 		assertTrue(as.getDecadenzeFruitoriStoriche().getElenco().contains(f2));
@@ -104,7 +100,7 @@ public class AnagraficaFruitoriTest {
 	
 	@Test
 	public void controlloDecadenzaFruitorePrecedenteAllaDataDiScadenzaPerArchivioStorico() {
-		f1.setDataDiScadenza(LocalDate.now().plusDays(1));
+		f1.setDataDiScadenza(Data.aumentaDataAttualeNumeroGiorni(1));
 		af.decadenzaFruitore(as);
 		
 		assertFalse(as.getDecadenzeFruitoriStoriche().getElenco().contains(f1));
@@ -112,7 +108,7 @@ public class AnagraficaFruitoriTest {
 	
 	@Test
 	public void controlloDecadenzaFruitorePrecedenteAllaDataDiScadenza() {
-		f1.setDataDiScadenza(LocalDate.now().plusDays(1));
+		f1.setDataDiScadenza(Data.aumentaDataAttualeNumeroGiorni(1));
 		af.decadenzaFruitore(as);
 		
 		assertTrue(af.getElenco().contains(f1));

@@ -7,9 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 import dominio.parte2.punto5.Categoria;
 import dominio.parte2.punto5.Libro;
-import logica.parte2.punto5.Persona;
+import dominio.parte2.punto5.Persona;
 import logica.parte2.punto5.Fruitore;
 import logica.parte2.punto5.Prestito;
+import utility.parte2.Data;
 
 public class PrestitoTest {
 
@@ -44,35 +45,35 @@ public class PrestitoTest {
 	
 	@Test
 	public void controlloProrogaPrestitoSuccessivaAllaDataDiScadenza() {
-		p1.setDataDiScadenzaPrestito(LocalDate.now().minusDays(1));
+		p1.setDataDiScadenzaPrestito(Data.diminuisciDataAttualeNumeroGiorni(1));
 
 		assertFalse(p1.prorogaPrestito());
 	}
 	
 	@Test
 	public void controlloProrogaPrestitoCoincidenteConLaDataDiScadenza() {
-		p1.setDataDiScadenzaPrestito(LocalDate.now());
+		p1.setDataDiScadenzaPrestito(Data.getDataAttuale());
 
 		assertFalse(p1.prorogaPrestito());
 	}
 	
 	@Test
 	public void controlloProrogaPrestitoInEccessivoAnticipo() {
-		p1.setDataDiScadenzaPrestito(LocalDate.now().plusDays(4));
+		p1.setDataDiScadenzaPrestito(Data.aumentaDataAttualeNumeroGiorni(4));
 
 		assertFalse(p1.prorogaPrestito());
 	}
 	
 	@Test
 	public void controlloProrogaPrestitoCorretta1() {
-		p1.setDataDiScadenzaPrestito(LocalDate.now().plusDays(3));
+		p1.setDataDiScadenzaPrestito(Data.aumentaDataAttualeNumeroGiorni(3));
 
 		assertTrue(p1.prorogaPrestito());
 	}
 	
 	@Test
 	public void controlloProrogaPrestitoCorretta2() {
-		p1.setDataDiScadenzaPrestito(LocalDate.now().plusDays(1));
+		p1.setDataDiScadenzaPrestito(Data.aumentaDataAttualeNumeroGiorni(1));
 
 		assertTrue(p1.prorogaPrestito());
 	}

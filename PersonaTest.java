@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import logica.parte2.punto5.Persona;
+import dominio.parte2.punto5.Persona;
 
 public class PersonaTest {
 

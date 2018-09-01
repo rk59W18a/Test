@@ -1,17 +1,17 @@
 package test_2.punto5;
 
 import static org.junit.Assert.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import dominio.parte2.punto5.Categoria;
 import dominio.parte2.punto5.Film;
 import dominio.parte2.punto5.Libro;
-import logica.parte2.punto5.Persona;
+import dominio.parte2.punto5.Persona;
 import logica.parte2.punto5.ArchivioStorico;
 import logica.parte2.punto5.Fruitore;
 import logica.parte2.punto5.Prestito;
+import utility.parte2.Data;
 
 public class ArchivioStoricoTest {
 
@@ -65,7 +65,7 @@ public class ArchivioStoricoTest {
 	
 	@Test
 	public void VerificaNumeroPrestitiPerAnnoSenzaAlcunPrestito() {
-		assertEquals(as.numeroPrestitiPerAnno(LocalDate.now().getYear()), 0);
+		assertEquals(as.numeroPrestitiPerAnno(Data.getNumeroAnniDataAttuale()), 0);
 	}
 	
 	@Test
@@ -75,7 +75,7 @@ public class ArchivioStoricoTest {
 		as.getPrestitiStorici().aggiungiPrestito(p3);
 		as.getPrestitiStorici().aggiungiPrestito(p4);
 
-		assertEquals(as.numeroPrestitiPerAnno(LocalDate.now().getYear()), 4);
+		assertEquals(as.numeroPrestitiPerAnno(Data.getNumeroAnniDataAttuale()), 4);
 	}
 	
 	@Test
@@ -83,17 +83,17 @@ public class ArchivioStoricoTest {
 	    as.getPrestitiConProrogheStoriche().aggiungiPrestito(p1);
 	    as.getPrestitiConProrogheStoriche().aggiungiPrestito(p2);
 
-		assertEquals(as.numeroProroghePerAnno(LocalDate.now().getYear()), 0);
+		assertEquals(as.numeroProroghePerAnno(Data.getNumeroAnniDataAttuale()), 0);
 	}
 	
 	@Test
 	public void VerificaNumeroProroghePerAnnoConAlcuneProroghe1() {
 	    as.getPrestitiConProrogheStoriche().aggiungiPrestito(p1);
 	    as.getPrestitiConProrogheStoriche().aggiungiPrestito(p2);
-		p1.setProrogaNonEffettuata(LocalDate.now());
-		p2.setProrogaNonEffettuata(LocalDate.now());
+		p1.setProrogaNonEffettuata(Data.getDataAttuale());
+		p2.setProrogaNonEffettuata(Data.getDataAttuale());
 		
-		assertEquals(as.numeroProroghePerAnno(LocalDate.now().getYear()), 2);
+		assertEquals(as.numeroProroghePerAnno(Data.getNumeroAnniDataAttuale()), 2);
 	}
 	
 	@Test
@@ -103,9 +103,9 @@ public class ArchivioStoricoTest {
 	    as.getPrestitiConProrogheStoriche().aggiungiPrestito(p3);
 	    as.getPrestitiConProrogheStoriche().aggiungiPrestito(p4);
 
-		p1.setProrogaNonEffettuata(LocalDate.of(2015, 11, 14));
-		p2.setProrogaNonEffettuata(LocalDate.of(2015, 5, 23));
-		p3.setProrogaNonEffettuata(LocalDate.of(2011, 2, 4));
+		p1.setProrogaNonEffettuata(Data.getDataImpostata(2015, 11, 14));
+		p2.setProrogaNonEffettuata(Data.getDataImpostata(2015, 5, 23));
+		p3.setProrogaNonEffettuata(Data.getDataImpostata(2011, 2, 4));
 		
 		assertEquals(as.numeroProroghePerAnno(2015), 2);
 	}
@@ -116,7 +116,7 @@ public class ArchivioStoricoTest {
 		as.getPrestitiStorici().aggiungiPrestito(p2);
 		as.getPrestitiStorici().aggiungiPrestito(p3);
 		as.getPrestitiStorici().aggiungiPrestito(p4);
-		assertEquals(as.numeroPrestitiPerFruitorePerAnno(fru1, LocalDate.now().getYear()), 2);
+		assertEquals(as.numeroPrestitiPerFruitorePerAnno(fru1, Data.getNumeroAnniDataAttuale()), 2);
 	}
 	
 	@Test
@@ -125,7 +125,7 @@ public class ArchivioStoricoTest {
 		as.getPrestitiStorici().aggiungiPrestito(p2);
 		as.getPrestitiStorici().aggiungiPrestito(p3);
 		as.getPrestitiStorici().aggiungiPrestito(p4);
-		assertEquals(as.numeroPrestitiPerFruitorePerAnno(fru1, LocalDate.now().minusYears(1).getYear()), 0);
+		assertEquals(as.numeroPrestitiPerFruitorePerAnno(fru1, Data.getNumeroAnniData(Data.diminuisciDataAttualeNumeroAnni(1))), 0);
 	}
 	
 	@Test
@@ -134,7 +134,7 @@ public class ArchivioStoricoTest {
 		as.getPrestitiStorici().aggiungiPrestito(p2);
 		as.getPrestitiStorici().aggiungiPrestito(p3);
 		as.getPrestitiStorici().aggiungiPrestito(p4);
-		assertEquals(as.numeroPrestitiPerFruitorePerAnno(fru3, LocalDate.now().getYear()), 0);
+		assertEquals(as.numeroPrestitiPerFruitorePerAnno(fru3, Data.getNumeroAnniDataAttuale()), 0);
 	}
 	
 }

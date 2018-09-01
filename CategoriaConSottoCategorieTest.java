@@ -9,11 +9,11 @@ import org.junit.Test;
 import dominio.parte2.punto5.Categoria;
 import dominio.parte2.punto5.Film;
 import dominio.parte2.punto5.IRicercaStrategy;
+import dominio.parte2.punto5.Persona;
 import dominio.parte2.punto5.RicercaPerArtistaStrategy;
 import dominio.parte2.punto5.RicercaPerGenereStrategy;
 import dominio.parte2.punto5.RicercaPerRegistaStrategy;
 import dominio.parte2.punto5.SottoCategoria;
-import logica.parte2.punto5.Persona;
 
 public class CategoriaConSottoCategorieTest {
 

@@ -1,17 +1,17 @@
 package test_2.punto5;
 
 import static org.junit.Assert.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 import dominio.parte2.punto5.Categoria;
 import dominio.parte2.punto5.Film;
 import dominio.parte2.punto5.Libro;
-import logica.parte2.punto5.Persona;
+import dominio.parte2.punto5.Persona;
 import logica.parte2.punto5.ArchivioPrestiti;
 import logica.parte2.punto5.Fruitore;
 import logica.parte2.punto5.Prestito;
+import utility.parte2.Data;
 
 public class ArchivioPrestitiTest {
 
@@ -123,7 +123,7 @@ public class ArchivioPrestitiTest {
 	
 	@Test
 	public void controlloScadenzaPrestitoDataCoincidente() {
-		arc.getElencoPrestiti().get(0).setDataDiScadenzaPrestito(LocalDate.now());
+		arc.getElencoPrestiti().get(0).setDataDiScadenzaPrestito(Data.getDataAttuale());
 		arc.scadenzaPrestito();
 
 		assertFalse(arc.getElencoPrestiti().contains(p1));
@@ -131,7 +131,7 @@ public class ArchivioPrestitiTest {
 	
 	@Test
 	public void controlloScadenzaPrestitoDataSuccessiva() {
-		arc.getElencoPrestiti().get(0).setDataDiScadenzaPrestito(LocalDate.now().minusDays(1));
+		arc.getElencoPrestiti().get(0).setDataDiScadenzaPrestito(Data.diminuisciDataAttualeNumeroGiorni(1));
 		arc.scadenzaPrestito();
 
 		assertFalse(arc.getElencoPrestiti().contains(p1));
@@ -139,7 +139,7 @@ public class ArchivioPrestitiTest {
 	
 	@Test
 	public void controlloScadenzaPrestitoDataPrecedente() {
-		arc.getElencoPrestiti().get(0).setDataDiScadenzaPrestito(LocalDate.now().plusDays(1));
+		arc.getElencoPrestiti().get(0).setDataDiScadenzaPrestito(Data.aumentaDataAttualeNumeroGiorni(1));
 		arc.scadenzaPrestito();
 
 		assertTrue(arc.getElencoPrestiti().contains(p1));
